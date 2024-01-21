@@ -1,3 +1,4 @@
+
 config {  
   type: "view",
   schema: "Demo_STR_MP",
