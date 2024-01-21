@@ -1,0 +1,3 @@
+config {  type: "view",
+  schema: "Demo_STR_MP" }
+SELECT * FROM `bq_integration_eu.Product_process_platforms`
