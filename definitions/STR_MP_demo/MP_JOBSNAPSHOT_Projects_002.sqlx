@@ -20,4 +20,4 @@ FROM
     ROW_NUMBER() OVER (PARTITION BY id ORDER BY sync_time DESC) AS ROW,
    FROM `bq_integration_eu.BQ_Projects_Sync` --${ref("MP_GETVIEW_Projects_001")} 
  )
-WHERE ROW=1 AND record_deleted =FALSE
+WHERE ROW=1 AND record_deleted =FALSE--
