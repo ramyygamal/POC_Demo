@@ -4,8 +4,6 @@ config {
   dependencies: ["MP_JOBSNAPSHOT_Projects_002"],
   tags: ["t_cal_daily"]}
 
-
-  -- - DataStudio Dashboards_MP BQ Projects Sync calc_valeo.cp0512-dts.technical@valeo.com
 WITH
 CALC_level_1 AS 
 (
@@ -47,10 +45,10 @@ CALC_level_1 AS
   IF(award_completion_date IS NULL, 0, 1) AS awarded_not,
   IF(award_completion_date IS NULL, 'No', 'Yes') AS awarded_ques,
   CASE
-    WHEN Project_Type ="P2"  THEN CONCAT("https://innovation-dot-valeo-cp0512-acp3.appspot.com/#/home/innovation/projectslist/P2/",project_id)
-    WHEN Project_Type ="P3"  THEN CONCAT("https://innovation-dot-valeo-cp0512-acp3.appspot.com/#/home/innovation/projectslist/P3/",project_id)
-    WHEN Project_Type ="P1"  THEN CONCAT("https://myprojects-dot-valeo-cp0512-acp3.appspot.com/#/home/myprojects/projectslist/P1/",project_id)
-    WHEN Project_Type ="P10"  THEN CONCAT("https://myprojects-dot-valeo-cp0512-acp3.appspot.com/#/home/myprojects/projectslist/P10/",project_id)
+    WHEN Project_Type ="P2"  THEN CONCAT("https://innovation-dot-valeo-cp0512-str.appspot.com/#/home/innovation/projectslist/P2/",project_id)
+    WHEN Project_Type ="P3"  THEN CONCAT("https://innovation-dot-valeo-cp0512-str.appspot.com/#/home/innovation/projectslist/P3/",project_id)
+    WHEN Project_Type ="P1"  THEN CONCAT("https://myprojects-dot-valeo-cp0512-str.appspot.com/#/home/myprojects/projectslist/P1/",project_id)
+    WHEN Project_Type ="P10"  THEN CONCAT("https://myprojects-dot-valeo-cp0512-str.appspot.com/#/home/myprojects/projectslist/P10/",project_id)
   END AS concat_PCID,
   CASE
     WHEN dr_completed =TRUE THEN "Yes"
@@ -68,11 +66,11 @@ CALC_level_1 AS
   END AS NPA_budgeted_Yes_No,
   IF(npa_budgeted =TRUE, 1, 0) AS npa_budgeted_true,
   IF(product_description IS NULL, 0, 1) AS product_filled,
-  CONCAT("https://myprojects-dot-valeo-cp0512-acp3.appspot.com/#/home/myprojects/projectslist/",project_id) AS TEST_PCID,
+  CONCAT("https://myprojects-dot-valeo-cp0512-str.appspot.com/#/home/myprojects/projectslist/",project_id) AS TEST_PCID,
   IF(end_user_customer_sales_group_name="Volkswagen Group" OR
     end_user_customer_sales_group_name="BMW Group" OR
     end_user_customer_sales_group_name="Daimler Group",1,0) AS end_user_check,
-  FROM `Demo_STR_MP.MP_SNAPSHOT_Projects_002`
+  FROM Demo_STR_MP.MP_SNAPSHOT_Projects_002
 ),
 
 CALC_level_2 AS
