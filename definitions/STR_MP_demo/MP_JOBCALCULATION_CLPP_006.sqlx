@@ -1,0 +1,18 @@
+config {  type: "view" ,
+  schema: "Demo_STR_MP",
+  dependencies: ["MP_JOBSNAPSHOT_CLPP_005"],
+  tags: ["t_cal_daily"]}
+SELECT
+ project_id,
+ ROW,
+ REGEXP_REPLACE(pma_comments, r'<.*?>', '') AS pma_comments,
+ DATE(pma_last_monthly_assessment) AS pma_last_monthly_assessment,
+ pma_psc_review
+FROM
+ (
+   SELECT
+    *,
+    ROW_NUMBER() OVER (PARTITION BY project_id ORDER BY pma_last_monthly_assessment DESC) AS ROW
+   FROM Demo_STR_MP.MP_JOBSNAPSHOT_CLPP_005--`Analytics_snapshots.CLPP_BQProjectCLPP` 
+ )
+WHERE ROW=1 
