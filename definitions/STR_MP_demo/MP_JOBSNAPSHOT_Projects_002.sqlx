@@ -1,8 +1,8 @@
 config {  
   type: "table",
-  schema: "test_STR_MP",
+  schema: "Demo_STR_MP",
   dependencies: ["MP_GETVIEW_Projects_001"],
-  tags: ["snapshot","daily"]}
+  tags: ["t_snapshot_daily"]}
 
 SELECT
  * EXCEPT(ROW,record_deleted,bg,cyber_security_level),

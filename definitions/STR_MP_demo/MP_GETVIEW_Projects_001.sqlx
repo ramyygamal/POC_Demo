@@ -1,5 +1,5 @@
 config {
     type: "view",
-    schema: "VW_source_tables",
-    tags: ["t_get","t_source_table"] }
+    schema: "Demo_STR_MP",
+    tags: ["t_get_source_table"] }
 SELECT * FROM `bq_integration_eu.BQ_Projects_Sync` -- test
