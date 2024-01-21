@@ -1,0 +1,13 @@
+config {  type: "view",
+  schema: "Demo_STR_MP",
+  dependencies: ["MP_GETVIEW_CLPP_004"],
+  tags: ["t_snapshot_daily"] }
+  SELECT
+    * EXCEPT (ROW)
+  FROM (
+    SELECT
+      *,
+      ROW_NUMBER() OVER (PARTITION BY id ORDER BY sync_time DESC) AS ROW
+    FROM
+      ${ref("MP_GETVIEW_CLPP_004")}
+) WHERE ROW=1
