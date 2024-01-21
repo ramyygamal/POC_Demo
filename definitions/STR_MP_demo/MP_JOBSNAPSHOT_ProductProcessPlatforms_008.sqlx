@@ -1,0 +1,13 @@
+config {  type: "view",
+  schema: "Demo_STR_MP",
+  dependencies: ["MP_GETVIEW_ProductProcessPlatforms_007"],
+  tags: ["t_snapshot_daily"]} 
+SELECT product_process_platform,description
+FROM (
+SELECT product_process_platform,description,
+ROW_NUMBER() OVER(PARTITION BY id ORDER BY sync_time DESC ) AS row_num,
+FROM
+${ref("MP_GETVIEW_ProductProcessPlatforms_007")}
+)
+WHERE
+row_num =1
