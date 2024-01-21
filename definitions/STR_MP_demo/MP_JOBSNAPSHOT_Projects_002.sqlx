@@ -1,5 +1,5 @@
 config {  
-  type: "table",
+  type: "view",
   schema: "Demo_STR_MP",
   dependencies: ["MP_GETVIEW_Projects_001"],
   tags: ["t_snapshot_daily"]}
