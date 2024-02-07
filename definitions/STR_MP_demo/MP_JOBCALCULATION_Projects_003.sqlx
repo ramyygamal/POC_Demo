@@ -8,7 +8,7 @@ WITH
 CALC_level_1 AS 
 (
   SELECT *,
-  EXTRACT(DATE FROM award_completion_date) AS award_date,
+  EXTRACT(DATE FROM award_completion_date) AS award_date,--- comment 
   FORMAT_DATETIME("%b", award_completion_date) AS award_month_name,
   EXTRACT(MONTH FROM award_completion_date) AS award_month,
   EXTRACT(YEAR FROM award_completion_date) AS award_year,
