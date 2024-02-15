@@ -10,4 +10,4 @@ config {  type: "view",
       ROW_NUMBER() OVER (PARTITION BY id ORDER BY sync_time DESC) AS ROW
     FROM
       ${ref("MP_GETVIEW_CLPP_004")}
-) WHERE ROW=1
+) WHERE ROW=1 -- test
